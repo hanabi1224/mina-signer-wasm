@@ -187,17 +187,17 @@ impl From<MinaPayment> for SignedCommandJson {
                     fee_token: U64Json(1),
                     nonce: U32Json(p.nonce),
                     valid_until: U32Json(p.valid_until),
-                    fee_payer_pk: compressed_pubkey_to_json(p.from),
+                    fee_payer_pk: compressed_pubkey_to_json(&p.from),
                     memo: SignedCommandMemoJson(p.memo.to_vec()),
                 },
                 body: SignedCommandPayloadBodyJson::PaymentPayload(PaymentPayloadJson {
-                    source_pk: compressed_pubkey_to_json(p.from),
-                    receiver_pk: compressed_pubkey_to_json(p.to),
+                    source_pk: compressed_pubkey_to_json(&p.from),
+                    receiver_pk: compressed_pubkey_to_json(&p.to),
                     token_id: U64Json(1),
                     amount: U64Json(p.amount),
                 }),
             },
-            signer: compressed_pubkey_to_json(p.from),
+            signer: compressed_pubkey_to_json(&p.from),
             signature: signature_to_json(dummy_signature),
         }
     }

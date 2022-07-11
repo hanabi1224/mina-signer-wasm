@@ -41,6 +41,7 @@ jobs:
         run: yarn install --immutable
       - run: yarn workspaces foreach -vpt run build
       - run: yarn workspaces foreach -vpt run test
+      - run: yarn workspaces foreach -vpt run benchmark
       - uses: actions/upload-artifact@v3
         with:
           name: mina-singer-wasm-package

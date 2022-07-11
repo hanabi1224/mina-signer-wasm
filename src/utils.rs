@@ -15,7 +15,7 @@ pub(crate) fn map_js_err<T: Display>(err: T) -> JsError {
     JsError::new(&format!("{err}"))
 }
 
-pub(crate) fn compressed_pubkey_to_json(v: CompressedPubKey) -> PublicKeyJson {
+pub(crate) fn compressed_pubkey_to_json(v: &CompressedPubKey) -> PublicKeyJson {
     let ccp = CompressedCurvePoint {
         // This unwrap of a slice conversion is safe as a CompressedPubKey always has 32 bytes of data which the exact length of
         // FieldElement
